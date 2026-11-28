@@ -1,3 +1,4 @@
+
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
 
@@ -11,5 +12,16 @@ export default defineConfig({
     globals: true,
     css: true,
     exclude: ['e2e/**', 'node_modules/**', 'dist/**'],
+
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html', 'lcov'],
+      include: ['src/**/*.{js,jsx}'],
+      exclude: [
+        'src/test/**',
+        'src/**/*.test.{js,jsx}',
+        'src/main.jsx',
+      ],
+    },
   },
 })
